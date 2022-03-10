@@ -8,12 +8,15 @@ import (
 	"github.com/Selly-Modules/natsio"
 )
 
+// Client ...
 type Client struct {
 	Config        Config
 	natsServer    natsio.Server
 	natsJetStream natsio.JetStream
 }
 
+// NewClient
+// Init client elasticsearch
 func NewClient(config Config) (*Client, error) {
 	if config.ApiKey == "" {
 		return nil, errors.New("api key is required")
@@ -34,6 +37,8 @@ func NewClient(config Config) (*Client, error) {
 	return c, nil
 }
 
+// SyncData
+// Sync data to services ES
 func (c *Client) SyncData(data SyncData) (bool, error) {
 	var (
 		res Response
@@ -51,6 +56,8 @@ func (c *Client) SyncData(data SyncData) (bool, error) {
 	return res.Success, nil
 }
 
+// Search
+// Request search to service es
 func (c *Client) Search(query ESQuery) ([]string, error) {
 	var (
 		res Response
@@ -68,6 +75,8 @@ func (c *Client) Search(query ESQuery) ([]string, error) {
 	return res.Data, nil
 }
 
+// UpdateDocument
+// Insert or update document to ES
 func (c *Client) UpdateDocument(query UpdateDataPayload) ([]string, error) {
 	var (
 		res Response

@@ -2,6 +2,8 @@ package elasticsearch
 
 import "time"
 
+// Response
+// response to service es
 type Response struct {
 	Success bool     `json:"success"`
 	Data    []string `json:"data,omitempty"`
@@ -11,16 +13,22 @@ type Response struct {
 	Message string   `json:"message"`
 }
 
+// SyncData
+// Payload for sync data to service es
 type SyncData struct {
 	Index string
 	Data  []byte
 }
 
+// UpdateDataPayload
+// Payload for insert or update document
 type UpdateDataPayload struct {
 	Index string
 	Body  []byte
 }
 
+// ESQuery
+// Query support to search document
 type ESQuery struct {
 	Index                 string // Index
 	Page                  int64
@@ -73,7 +81,11 @@ type ESQuery struct {
 	Segments              []string
 }
 
+// ESSort
+// ES sort with field
+// ... filed is sort
+// ... ascending [true is asc] [false is desc]
 type ESSort struct {
-	Filed     string // Filed sort
+	Field     string // Filed sort
 	Ascending bool
 }

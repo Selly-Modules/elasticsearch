@@ -1,5 +1,5 @@
 package elasticsearch
 
-const SubjectSyncData = "sync_data"
-const SubjectSearch = "search"
-const SubjectUpdateDocument = "update_document"
+const SubjectSyncData = "elasticsearch_sync_data"
+const SubjectSearch = "elasticsearch_search"
+const SubjectUpdateDocument = "elasticsearch_update_document"
