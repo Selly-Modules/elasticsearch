@@ -2,6 +2,12 @@ package elasticsearch
 
 import "time"
 
+// RequestBody ...
+type RequestBody struct {
+	ApiKey string `json:"apiKey"`
+	Body   []byte `json:"body"`
+}
+
 // Response
 // response to service es
 type Response struct {
@@ -50,6 +56,7 @@ type ESQuery struct {
 	PaymentMethod         string
 	Source                string
 	FromNewActiveSeller   string
+	FromNewActiveBuyer    string
 	EmailStatus           string
 	MerchantStatus        string
 	IsCalled              string

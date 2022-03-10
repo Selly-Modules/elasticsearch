@@ -42,8 +42,12 @@ func NewClient(config Config) (*Client, error) {
 func (c *Client) SyncData(data SyncData) (bool, error) {
 	var (
 		res Response
+		req = RequestBody{
+			ApiKey: c.Config.ApiKey,
+			Body:   toBytes(data),
+		}
 	)
-	msg, err := c.natsServer.Request(SubjectSyncData, toBytes(data))
+	msg, err := c.natsServer.Request(SubjectSyncData, toBytes(req))
 	if err != nil {
 		return false, err
 	}
@@ -58,40 +62,48 @@ func (c *Client) SyncData(data SyncData) (bool, error) {
 
 // Search
 // Request search to service es
-func (c *Client) Search(query ESQuery) ([]string, error) {
+func (c *Client) Search(query ESQuery) (*Response, error) {
 	var (
-		res Response
+		req = RequestBody{
+			ApiKey: c.Config.ApiKey,
+			Body:   toBytes(query),
+		}
+		res *Response
 	)
-	msg, err := c.natsServer.Request(SubjectSearch, toBytes(query))
+	msg, err := c.natsServer.Request(SubjectSearch, toBytes(req))
 	if err != nil {
-		return res.Data, err
+		return nil, err
 	}
 	if err = json.Unmarshal(msg.Data, &res); err != nil {
-		return res.Data, err
+		return nil, err
 	}
 	if res.Message != "" {
-		return res.Data, errors.New(res.Message)
+		return nil, errors.New(res.Message)
 	}
-	return res.Data, nil
+	return res, nil
 }
 
 // UpdateDocument
 // Insert or update document to ES
-func (c *Client) UpdateDocument(query UpdateDataPayload) ([]string, error) {
+func (c *Client) UpdateDocument(query UpdateDataPayload) (bool, error) {
 	var (
+		req = RequestBody{
+			ApiKey: c.Config.ApiKey,
+			Body:   toBytes(query),
+		}
 		res Response
 	)
-	msg, err := c.natsServer.Request(SubjectUpdateDocument, toBytes(query))
+	msg, err := c.natsServer.Request(SubjectUpdateDocument, toBytes(req))
 	if err != nil {
-		return res.Data, err
+		return false, err
 	}
 	if err = json.Unmarshal(msg.Data, &res); err != nil {
-		return res.Data, err
+		return false, err
 	}
 	if res.Message != "" {
-		return res.Data, errors.New(res.Message)
+		return res.Success, errors.New(res.Message)
 	}
-	return res.Data, nil
+	return res.Success, nil
 }
 
 func toBytes(data interface{}) []byte {
