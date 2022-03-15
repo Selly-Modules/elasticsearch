@@ -116,12 +116,19 @@ func (c *Client) CreateIndex(name string) (bool, error) {
 			ApiKey: c.Config.ApiKey,
 			Body:   toBytes(name),
 		}
+		res *Response
 	)
-	err := c.natsJetStream.Publish(JetStreamSearchService, SubjectCreateIndex, toBytes(req))
+	msg, err := c.natsServer.Request(SubjectCreateIndex, toBytes(req))
 	if err != nil {
 		return false, err
 	}
-	return true, nil
+	if err = json.Unmarshal(msg.Data, &res); err != nil {
+		return false, err
+	}
+	if res.Message != "" {
+		return false, errors.New(res.Message)
+	}
+	return res.Success, nil
 }
 
 func toBytes(data interface{}) []byte {
