@@ -33,6 +33,13 @@ type UpdateDataPayload struct {
 	Body  []byte
 }
 
+// DeleteDataPayload
+// Payload for delete document
+type DeleteDataPayload struct {
+	Index string
+	ID    string
+}
+
 // ESQuery
 // Query support to search document
 type ESQuery struct {
@@ -42,6 +49,9 @@ type ESQuery struct {
 	Keyword               string
 	ProvinceCode          int
 	Active                string
+	IsOutOfStock          string
+	CanIssueInvoice       string
+	PendingInactive       string
 	Categories            []string
 	SubCategories         []string
 	IgnoreIDs             []string

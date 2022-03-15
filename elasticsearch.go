@@ -41,23 +41,16 @@ func NewClient(config Config) (*Client, error) {
 // Sync data to services ES
 func (c *Client) SyncData(data SyncData) (bool, error) {
 	var (
-		res Response
 		req = RequestBody{
 			ApiKey: c.Config.ApiKey,
 			Body:   toBytes(data),
 		}
 	)
-	msg, err := c.natsServer.Request(SubjectSyncData, toBytes(req))
+	err := c.natsJetStream.Publish(JetStreamSearchService, SubjectSyncData, toBytes(req))
 	if err != nil {
 		return false, err
 	}
-	if err = json.Unmarshal(msg.Data, &res); err != nil {
-		return false, err
-	}
-	if res.Message != "" {
-		return false, errors.New(res.Message)
-	}
-	return res.Success, nil
+	return true, nil
 }
 
 // Search
@@ -91,9 +84,41 @@ func (c *Client) UpdateDocument(query UpdateDataPayload) (bool, error) {
 			ApiKey: c.Config.ApiKey,
 			Body:   toBytes(query),
 		}
-		res Response
 	)
-	msg, err := c.natsServer.Request(SubjectUpdateDocument, toBytes(req))
+	err := c.natsJetStream.Publish(JetStreamSearchService, SubjectUpdateDocument, toBytes(req))
+	if err != nil {
+		return false, err
+	}
+	return true, nil
+}
+
+// DeleteDocument
+// Delete document to ES
+func (c *Client) DeleteDocument(payload DeleteDataPayload) (bool, error) {
+	var (
+		req = RequestBody{
+			ApiKey: c.Config.ApiKey,
+			Body:   toBytes(payload),
+		}
+	)
+	err := c.natsJetStream.Publish(JetStreamSearchService, SubjectUpdateDocument, toBytes(req))
+	if err != nil {
+		return false, err
+	}
+	return true, nil
+}
+
+// CreateIndex
+// Create index to ES
+func (c *Client) CreateIndex(name string) (bool, error) {
+	var (
+		req = RequestBody{
+			ApiKey: c.Config.ApiKey,
+			Body:   toBytes(name),
+		}
+		res *Response
+	)
+	msg, err := c.natsServer.Request(SubjectCreateIndex, toBytes(req))
 	if err != nil {
 		return false, err
 	}
@@ -101,7 +126,7 @@ func (c *Client) UpdateDocument(query UpdateDataPayload) (bool, error) {
 		return false, err
 	}
 	if res.Message != "" {
-		return res.Success, errors.New(res.Message)
+		return false, errors.New(res.Message)
 	}
 	return res.Success, nil
 }
