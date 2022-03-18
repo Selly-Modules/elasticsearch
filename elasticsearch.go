@@ -45,11 +45,35 @@ func (c *Client) SyncData(data SyncData) (bool, error) {
 			ApiKey: c.Config.ApiKey,
 			Body:   toBytes(data),
 		}
+		res *Response
+	)
+	msg, err := c.natsServer.Request(SubjectSyncData, toBytes(req))
+	if err != nil {
+		return false, err
+	}
+	if err = json.Unmarshal(msg.Data, &res); err != nil {
+		return false, err
+	}
+	if res.Message != "" {
+		return false, errors.New(res.Message)
+	}
+	return res.Success, nil
+}
+
+// SyncDataWithJetStream
+// Sync data to services ES with JetStream
+func (c *Client) SyncDataWithJetStream(data SyncData) (bool, error) {
+	var (
+		req = RequestBody{
+			ApiKey: c.Config.ApiKey,
+			Body:   toBytes(data),
+		}
 	)
 	err := c.natsJetStream.Publish(JetStreamSearchService, SubjectSyncData, toBytes(req))
 	if err != nil {
 		return false, err
 	}
+
 	return true, nil
 }
 
