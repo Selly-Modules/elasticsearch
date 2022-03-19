@@ -53,17 +53,17 @@ func GetClient() *Client {
 	return client
 }
 
-// RequestNats
+// requestNats
 // publish message to nats and waiting response
-func (c *Client) RequestNats(subject string, data []byte) (*Response, error) {
+func requestNats(subject string, data []byte) (*Response, error) {
 	var (
 		req = RequestBody{
-			ApiKey: c.Config.ApiKey,
+			ApiKey: client.Config.ApiKey,
 			Body:   data,
 		}
 		res *Response
 	)
-	msg, err := c.natsServer.Request(subject, toBytes(req))
+	msg, err := client.natsServer.Request(subject, toBytes(req))
 	if err != nil {
 		return nil, err
 	}
@@ -76,16 +76,16 @@ func (c *Client) RequestNats(subject string, data []byte) (*Response, error) {
 	return res, nil
 }
 
-// PublishWithJetStream
+// publishWithJetStream
 // Sync data to services ES with JetStream
-func (c *Client) PublishWithJetStream(streamName, subject string, data []byte) (bool, error) {
+func publishWithJetStream(streamName, subject string, data []byte) (bool, error) {
 	var (
 		req = RequestBody{
-			ApiKey: c.Config.ApiKey,
+			ApiKey: client.Config.ApiKey,
 			Body:   data,
 		}
 	)
-	err := c.natsJetStream.Publish(streamName, subject, toBytes(req))
+	err := client.natsJetStream.Publish(streamName, subject, toBytes(req))
 	if err != nil {
 		return false, err
 	}
