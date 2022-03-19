@@ -13,7 +13,6 @@ const (
 
 	SubjectRequestUserUpsert = "elasticsearch/selly.request.order.upsert"
 	SubjectQueueUserUpsert   = "elasticsearch/selly.queue.order.upsert"
-	SubjectPushUserUpsert    = "elasticsearch/selly.push.order.upsert"
 	SubjectPullUserUpsert    = "elasticsearch/selly.pull.order.upsert"
 	SubjectRequestUserSearch = "elasticsearch/selly.request.user.search"
 )
