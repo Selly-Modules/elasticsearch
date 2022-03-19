@@ -1,13 +1,23 @@
 package elasticsearch
 
 const (
-	SubjectSyncData       = "elasticsearch/sync_data"
-	SubjectSearch         = "elasticsearch/search"
-	SubjectUpdateDocument = "elasticsearch/update_document"
-	SubjectCreateIndex    = "elasticsearch/create_index"
-	SubjectDeleteDocument = "elasticsearch/delete_document"
+	SubjectRequestProductUpsert = "elasticsearch/selly.request.product.upsert"
+	SubjectQueueProductUpsert   = "elasticsearch/selly.queue.product.upsert"
+	SubjectPullProductUpsert    = "elasticsearch/selly.pull.product.upsert"
+	SubjectRequestProductSearch = "elasticsearch/selly.request.product.search"
+
+	SubjectRequestOrderUpsert = "elasticsearch/selly.request.order.upsert"
+	SubjectQueueOrderUpsert   = "elasticsearch/selly.queue.order.upsert"
+	SubjectPullOrderUpsert    = "elasticsearch/selly.pull.order.upsert"
+	SubjectRequestOrderSearch = "elasticsearch/selly.request.order.search"
+
+	SubjectRequestUserUpsert = "elasticsearch/selly.request.order.upsert"
+	SubjectQueueUserUpsert   = "elasticsearch/selly.queue.order.upsert"
+	SubjectPushUserUpsert    = "elasticsearch/selly.push.order.upsert"
+	SubjectPullUserUpsert    = "elasticsearch/selly.pull.order.upsert"
+	SubjectRequestUserSearch = "elasticsearch/selly.request.user.search"
 )
 
 const (
-	JetStreamSearchService = "JetStreamSearchService"
+	JetStreamSearchService = "Service_Search"
 )
