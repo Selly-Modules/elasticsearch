@@ -49,10 +49,6 @@ func NewClient(config Config) (*Client, error) {
 	return client, nil
 }
 
-func GetClient() *Client {
-	return client
-}
-
 // requestNats
 // publish message to nats and waiting response
 func requestNats(subject string, data []byte) (*Response, error) {
