@@ -19,18 +19,11 @@ type Response struct {
 	Message string   `json:"message"`
 }
 
-// SyncData
-// Payload for sync data to service es
-type SyncData struct {
+// Payload ...
+// payload for sync data to service es
+type Payload struct {
 	Index string
 	Data  []byte
-}
-
-// UpdateDataPayload
-// Payload for insert or update document
-type UpdateDataPayload struct {
-	Index string
-	Body  []byte
 }
 
 // DeleteDataPayload

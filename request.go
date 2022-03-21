@@ -10,8 +10,8 @@ func (Request) ProductSearch(query ESQuery) (*Response, error) {
 }
 
 // ProductUpsert ...
-func (Request) ProductUpsert(query UpdateDataPayload) (*Response, error) {
-	return requestNats(SubjectRequestProductUpsert, toBytes(query))
+func (Request) ProductUpsert(payload Payload) (*Response, error) {
+	return requestNats(SubjectRequestProductUpsert, toBytes(payload))
 }
 
 // UserSearch ...
@@ -20,8 +20,8 @@ func (Request) UserSearch(query ESQuery) (*Response, error) {
 }
 
 // UserUpsert ...
-func (Request) UserUpsert(query UpdateDataPayload) (*Response, error) {
-	return requestNats(SubjectRequestUserUpsert, toBytes(query))
+func (Request) UserUpsert(payload Payload) (*Response, error) {
+	return requestNats(SubjectRequestUserUpsert, toBytes(payload))
 }
 
 // OrderSearch ...
@@ -30,6 +30,6 @@ func (Request) OrderSearch(query ESQuery) (*Response, error) {
 }
 
 // OrderUpsert ...
-func (Request) OrderUpsert(query UpdateDataPayload) (*Response, error) {
-	return requestNats(SubjectRequestOrderUpsert, toBytes(query))
+func (Request) OrderUpsert(payload Payload) (*Response, error) {
+	return requestNats(SubjectRequestOrderUpsert, toBytes(payload))
 }

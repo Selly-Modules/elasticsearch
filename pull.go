@@ -5,16 +5,16 @@ type Pull struct {
 }
 
 // ProductUpsert ...
-func (Pull) ProductUpsert(query UpdateDataPayload) (bool, error) {
-	return publishWithJetStream(JetStreamSearchService, SubjectPullProductUpsert, toBytes(query))
+func (Pull) ProductUpsert(payload Payload) (bool, error) {
+	return publishWithJetStream(JetStreamSearchService, SubjectPullProductUpsert, toBytes(payload))
 }
 
 // UserUpsert ...
-func (Pull) UserUpsert(query UpdateDataPayload) (bool, error) {
-	return publishWithJetStream(JetStreamSearchService, SubjectPullUserUpsert, toBytes(query))
+func (Pull) UserUpsert(payload Payload) (bool, error) {
+	return publishWithJetStream(JetStreamSearchService, SubjectPullUserUpsert, toBytes(payload))
 }
 
 // OrderUpsert ...
-func (Pull) OrderUpsert(query UpdateDataPayload) (bool, error) {
-	return publishWithJetStream(JetStreamSearchService, SubjectPullOrderUpsert, toBytes(query))
+func (Pull) OrderUpsert(payload Payload) (bool, error) {
+	return publishWithJetStream(JetStreamSearchService, SubjectPullOrderUpsert, toBytes(payload))
 }
