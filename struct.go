@@ -53,6 +53,8 @@ type ESQuery struct {
 	Type                  string
 	ServiceDelivery       string
 	SourceDelivery        string
+	Brands                []string
+	NoBrand               string
 	Banned                string
 	ListUser              []string
 	ListNotUser           []string
