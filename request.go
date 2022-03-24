@@ -33,3 +33,13 @@ func (Request) OrderSearch(query ESQuery) (*Response, error) {
 func (Request) OrderUpsert(payload Payload) (*Response, error) {
 	return requestNats(SubjectRequestOrderUpsert, toBytes(payload))
 }
+
+// KeywordSearch ...
+func (Request) KeywordSearch(query ESQuery) (*Response, error) {
+	return requestNats(SubjectRequestKeywordSearch, toBytes(query))
+}
+
+// KeywordUpsert ...
+func (Request) KeywordUpsert(payload Payload) (*Response, error) {
+	return requestNats(SubjectRequestKeywordUpsert, toBytes(payload))
+}

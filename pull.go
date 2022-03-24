@@ -18,3 +18,8 @@ func (Pull) UserUpsert(payload Payload) (bool, error) {
 func (Pull) OrderUpsert(payload Payload) (bool, error) {
 	return publishWithJetStream(JetStreamSearchService, SubjectPullOrderUpsert, toBytes(payload))
 }
+
+// KeywordUpsert ...
+func (Pull) KeywordUpsert(payload Payload) (bool, error) {
+	return publishWithJetStream(JetStreamSearchService, SubjectPullKeywordUpsert, toBytes(payload))
+}

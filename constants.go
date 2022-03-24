@@ -12,6 +12,10 @@ const (
 	SubjectRequestUserUpsert = "selly.request.user.upsert"
 	SubjectPullUserUpsert    = "selly.pull.user.upsert"
 	SubjectRequestUserSearch = "selly.request.user.search"
+
+	SubjectRequestKeywordUpsert = "selly.request.keyword.upsert"
+	SubjectPullKeywordUpsert    = "selly.pull.keyword.upsert"
+	SubjectRequestKeywordSearch = "selly.request.keyword.search"
 )
 
 const (
