@@ -11,12 +11,12 @@ type RequestBody struct {
 // Response
 // response to service es
 type Response struct {
-	Success bool     `json:"success"`
-	Data    []string `json:"data,omitempty"`
-	Total   int64    `json:"total,omitempty"`
-	Page    int64    `json:"page,omitempty"`
-	Limit   int64    `json:"limit,omitempty"`
-	Message string   `json:"message"`
+	Success bool   `json:"success"`
+	Data    []byte `json:"data,omitempty"`
+	Total   int64  `json:"total,omitempty"`
+	Page    int64  `json:"page,omitempty"`
+	Limit   int64  `json:"limit,omitempty"`
+	Message string `json:"message"`
 }
 
 // Payload ...
