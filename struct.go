@@ -11,26 +11,19 @@ type RequestBody struct {
 // Response
 // response to service es
 type Response struct {
-	Success bool     `json:"success"`
-	Data    []string `json:"data,omitempty"`
-	Total   int64    `json:"total,omitempty"`
-	Page    int64    `json:"page,omitempty"`
-	Limit   int64    `json:"limit,omitempty"`
-	Message string   `json:"message"`
+	Success bool   `json:"success"`
+	Data    []byte `json:"data,omitempty"`
+	Total   int64  `json:"total,omitempty"`
+	Page    int64  `json:"page,omitempty"`
+	Limit   int64  `json:"limit,omitempty"`
+	Message string `json:"message"`
 }
 
-// SyncData
-// Payload for sync data to service es
-type SyncData struct {
+// Payload ...
+// payload for sync data to service es
+type Payload struct {
 	Index string
 	Data  []byte
-}
-
-// UpdateDataPayload
-// Payload for insert or update document
-type UpdateDataPayload struct {
-	Index string
-	Body  []byte
 }
 
 // DeleteDataPayload
@@ -60,6 +53,8 @@ type ESQuery struct {
 	Type                  string
 	ServiceDelivery       string
 	SourceDelivery        string
+	Brands                []string
+	NoBrand               string
 	Banned                string
 	ListUser              []string
 	ListNotUser           []string

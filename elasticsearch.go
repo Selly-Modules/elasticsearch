@@ -13,7 +13,15 @@ type Client struct {
 	Config        Config
 	natsServer    natsio.Server
 	natsJetStream natsio.JetStream
+	Queue         Queue
+	Pull          Pull
+	Request       Request
+	Push          Push
 }
+
+var (
+	client *Client
+)
 
 // NewClient
 // Init client elasticsearch
@@ -28,66 +36,30 @@ func NewClient(config Config) (*Client, error) {
 		return nil, fmt.Errorf("nats connect failed: %v", err)
 	}
 
-	c := &Client{
+	client = &Client{
 		Config:        config,
 		natsServer:    natsio.GetServer(),
 		natsJetStream: natsio.GetJetStream(),
+		Queue:         Queue{},
+		Pull:          Pull{},
+		Request:       Request{},
+		Push:          Push{},
 	}
 
-	return c, nil
+	return client, nil
 }
 
-// SyncData
-// Sync data to services ES
-func (c *Client) SyncData(data SyncData) (bool, error) {
+// requestNats
+// publish message to nats and waiting response
+func requestNats(subject string, data []byte) (*Response, error) {
 	var (
 		req = RequestBody{
-			ApiKey: c.Config.ApiKey,
-			Body:   toBytes(data),
+			ApiKey: client.Config.ApiKey,
+			Body:   data,
 		}
 		res *Response
 	)
-	msg, err := c.natsServer.Request(SubjectSyncData, toBytes(req))
-	if err != nil {
-		return false, err
-	}
-	if err = json.Unmarshal(msg.Data, &res); err != nil {
-		return false, err
-	}
-	if res.Message != "" {
-		return false, errors.New(res.Message)
-	}
-	return res.Success, nil
-}
-
-// SyncDataWithJetStream
-// Sync data to services ES with JetStream
-func (c *Client) SyncDataWithJetStream(data SyncData) (bool, error) {
-	var (
-		req = RequestBody{
-			ApiKey: c.Config.ApiKey,
-			Body:   toBytes(data),
-		}
-	)
-	err := c.natsJetStream.Publish(JetStreamSearchService, SubjectSyncData, toBytes(req))
-	if err != nil {
-		return false, err
-	}
-
-	return true, nil
-}
-
-// Search
-// Request search to service es
-func (c *Client) Search(query ESQuery) (*Response, error) {
-	var (
-		req = RequestBody{
-			ApiKey: c.Config.ApiKey,
-			Body:   toBytes(query),
-		}
-		res *Response
-	)
-	msg, err := c.natsServer.Request(SubjectSearch, toBytes(req))
+	msg, err := client.natsServer.Request(subject, toBytes(req))
 	if err != nil {
 		return nil, err
 	}
@@ -100,59 +72,21 @@ func (c *Client) Search(query ESQuery) (*Response, error) {
 	return res, nil
 }
 
-// UpdateDocument
-// Insert or update document to ES
-func (c *Client) UpdateDocument(query UpdateDataPayload) (bool, error) {
+// publishWithJetStream
+// Sync data to services ES with JetStream
+func publishWithJetStream(streamName, subject string, data []byte) (bool, error) {
 	var (
 		req = RequestBody{
-			ApiKey: c.Config.ApiKey,
-			Body:   toBytes(query),
+			ApiKey: client.Config.ApiKey,
+			Body:   data,
 		}
 	)
-	err := c.natsJetStream.Publish(JetStreamSearchService, SubjectUpdateDocument, toBytes(req))
+	err := client.natsJetStream.Publish(streamName, subject, toBytes(req))
 	if err != nil {
 		return false, err
 	}
-	return true, nil
-}
 
-// DeleteDocument
-// Delete document to ES
-func (c *Client) DeleteDocument(payload DeleteDataPayload) (bool, error) {
-	var (
-		req = RequestBody{
-			ApiKey: c.Config.ApiKey,
-			Body:   toBytes(payload),
-		}
-	)
-	err := c.natsJetStream.Publish(JetStreamSearchService, SubjectUpdateDocument, toBytes(req))
-	if err != nil {
-		return false, err
-	}
 	return true, nil
-}
-
-// CreateIndex
-// Create index to ES
-func (c *Client) CreateIndex(name string) (bool, error) {
-	var (
-		req = RequestBody{
-			ApiKey: c.Config.ApiKey,
-			Body:   toBytes(name),
-		}
-		res *Response
-	)
-	msg, err := c.natsServer.Request(SubjectCreateIndex, toBytes(req))
-	if err != nil {
-		return false, err
-	}
-	if err = json.Unmarshal(msg.Data, &res); err != nil {
-		return false, err
-	}
-	if res.Message != "" {
-		return false, errors.New(res.Message)
-	}
-	return res.Success, nil
 }
 
 func toBytes(data interface{}) []byte {
