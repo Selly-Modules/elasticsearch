@@ -16,6 +16,8 @@ const (
 	SubjectRequestKeywordUpsert = "selly.request.keyword.upsert"
 	SubjectPullKeywordUpsert    = "selly.pull.keyword.upsert"
 	SubjectRequestKeywordSearch = "selly.request.keyword.search"
+
+	SubjectRequestCreateIndex = "selly.request.es.create_index"
 )
 
 const (

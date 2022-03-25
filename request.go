@@ -43,3 +43,8 @@ func (Request) KeywordSearch(query ESQuery) (*Response, error) {
 func (Request) KeywordUpsert(payload Payload) (*Response, error) {
 	return requestNats(SubjectRequestKeywordUpsert, toBytes(payload))
 }
+
+// CreateIndex ...
+func (Request) CreateIndex(payload Payload) (*Response, error) {
+	return requestNats(SubjectRequestCreateIndex, toBytes(payload))
+}
