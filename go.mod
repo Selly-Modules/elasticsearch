@@ -2,7 +2,7 @@ module github.com/Selly-Modules/elasticsearch
 
 go 1.17
 
-require github.com/Selly-Modules/natsio v0.0.0-20220330105528-1e3bfd73927d
+require github.com/Selly-Modules/natsio v0.0.0-20220330121714-2a9897e137f8
 
 require (
 	github.com/logrusorgru/aurora v2.0.3+incompatible // indirect
