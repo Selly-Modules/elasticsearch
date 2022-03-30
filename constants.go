@@ -14,7 +14,7 @@ const (
 	SubjectRequestKeywordUpsert      = "selly.request.keyword.upsert"
 	SubjectPullKeywordUpsert         = "selly.pull.keyword.upsert"
 	SubjectRequestKeywordSearch      = "selly.request.keyword.search"
-	SubjectRequestKeywordCreateIndex = "selly.request.order.create_index"
+	SubjectRequestKeywordCreateIndex = "selly.request.keyword.create_index"
 
 	SubjectRequestUserUpsert      = "selly.request.user.upsert"
 	SubjectPullUserUpsert         = "selly.pull.user.upsert"
