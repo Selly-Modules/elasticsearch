@@ -63,3 +63,8 @@ func (Request) KeywordUpsert(payload Payload) (*Response, error) {
 func (Request) KeywordCreateIndex() (*Response, error) {
 	return requestNats(SubjectRequestKeywordCreateIndex, toBytes(Payload{}))
 }
+
+// DeleteMultipleIndex ...
+func (Request) DeleteMultipleIndex(indexes []string) (*Response, error) {
+	return requestNats(SubjectRequestDeleteMultipleIndex, toBytes(indexes))
+}

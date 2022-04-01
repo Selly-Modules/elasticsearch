@@ -20,6 +20,8 @@ const (
 	SubjectPullUserUpsert         = "selly.pull.user.upsert"
 	SubjectRequestUserSearch      = "selly.request.user.search"
 	SubjectRequestUserCreateIndex = "selly.request.user.create_index"
+
+	SubjectRequestDeleteMultipleIndex = "selly.request.delete.multiple_index"
 )
 
 const (
