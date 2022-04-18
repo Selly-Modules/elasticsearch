@@ -1,5 +1,9 @@
 github.com/Selly-Modules/natsio v0.0.0-20220318042849-ee34e47598b7 h1:t4kLJt+Q4U4m79Ms9S6zjmIfTXSyrzxzVwLU6nGrQOo=
 github.com/Selly-Modules/natsio v0.0.0-20220318042849-ee34e47598b7/go.mod h1:NG55g9ip18nvN5tfP6PcSEKec10/lOeIOZC8HqBVNlQ=
+github.com/Selly-Modules/natsio v0.0.0-20220330105528-1e3bfd73927d h1:BtY+WFNqlz16xeYOqz97jghHylowTonJ9DLauOy/0bY=
+github.com/Selly-Modules/natsio v0.0.0-20220330105528-1e3bfd73927d/go.mod h1:NG55g9ip18nvN5tfP6PcSEKec10/lOeIOZC8HqBVNlQ=
+github.com/Selly-Modules/natsio v0.0.0-20220330121714-2a9897e137f8 h1:KbDjZorOkDgnPp8FaWG5XqChimLV7OseCcA52hQd+Lc=
+github.com/Selly-Modules/natsio v0.0.0-20220330121714-2a9897e137f8/go.mod h1:NG55g9ip18nvN5tfP6PcSEKec10/lOeIOZC8HqBVNlQ=
 github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/golang/protobuf v1.4.0-rc.1/go.mod h1:ceaxUfeHdC40wWswd/P6IGgMaK3YpKi5j83Wpe3EHw8=
