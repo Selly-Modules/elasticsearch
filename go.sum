@@ -4,6 +4,8 @@ github.com/Selly-Modules/natsio v0.0.0-20220330105528-1e3bfd73927d h1:BtY+WFNqlz
 github.com/Selly-Modules/natsio v0.0.0-20220330105528-1e3bfd73927d/go.mod h1:NG55g9ip18nvN5tfP6PcSEKec10/lOeIOZC8HqBVNlQ=
 github.com/Selly-Modules/natsio v0.0.0-20220330121714-2a9897e137f8 h1:KbDjZorOkDgnPp8FaWG5XqChimLV7OseCcA52hQd+Lc=
 github.com/Selly-Modules/natsio v0.0.0-20220330121714-2a9897e137f8/go.mod h1:NG55g9ip18nvN5tfP6PcSEKec10/lOeIOZC8HqBVNlQ=
+github.com/Selly-Modules/natsio v0.0.0-20220419025827-e72bc82991bf h1:EryKoDKmVTGHLBIUFGYqDxSZ/WtzyGAUK6skbGBcbG8=
+github.com/Selly-Modules/natsio v0.0.0-20220419025827-e72bc82991bf/go.mod h1:NG55g9ip18nvN5tfP6PcSEKec10/lOeIOZC8HqBVNlQ=
 github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/golang/protobuf v1.4.0-rc.1/go.mod h1:ceaxUfeHdC40wWswd/P6IGgMaK3YpKi5j83Wpe3EHw8=
@@ -35,6 +37,8 @@ github.com/nats-io/nats-server/v2 v2.6.1/go.mod h1:Az91TbZiV7K4a6k/4v6YYdOKEoxCX
 github.com/nats-io/nats.go v1.12.3/go.mod h1:BPko4oXsySz4aSWeFgOHLZs3G4Jq4ZAyE6/zMCxRT6w=
 github.com/nats-io/nats.go v1.13.0 h1:LvYqRB5epIzZWQp6lmeltOOZNLqCvm4b+qfvzZO03HE=
 github.com/nats-io/nats.go v1.13.0/go.mod h1:BPko4oXsySz4aSWeFgOHLZs3G4Jq4ZAyE6/zMCxRT6w=
+github.com/nats-io/nats.go v1.14.0 h1:/QLCss4vQ6wvDpbqXucsVRDi13tFIR6kTdau+nXzKJw=
+github.com/nats-io/nats.go v1.14.0/go.mod h1:BPko4oXsySz4aSWeFgOHLZs3G4Jq4ZAyE6/zMCxRT6w=
 github.com/nats-io/nkeys v0.2.0/go.mod h1:XdZpAbhgyyODYqjTawOnIOI7VlbKSarI9Gfy1tqEu/s=
 github.com/nats-io/nkeys v0.3.0 h1:cgM5tL53EvYRU+2YLXIK0G2mJtK12Ft9oeooSZMA2G8=
 github.com/nats-io/nkeys v0.3.0/go.mod h1:gvUNGjVcM2IPr5rCsRsC6Wb3Hr2CQAm08dsxtV6A5y4=
