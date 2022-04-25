@@ -36,8 +36,7 @@ type DeleteDataPayload struct {
 // ESQuery
 // Query support to search document
 type ESQuery struct {
-	IsPrefix              bool   // Search with prefix
-	IsMatch               bool   // Search with match
+	IsMatch               bool   // Search with match or prefix
 	Index                 string // Index
 	Page                  int64
 	Limit                 int64
