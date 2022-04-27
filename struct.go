@@ -92,6 +92,7 @@ type ESQuery struct {
 	MembershipLevel       int
 	Invitee               string
 	Segments              []string
+	IsOrderMerchant       bool
 }
 
 // ESSort
