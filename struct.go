@@ -93,6 +93,8 @@ type ESQuery struct {
 	Invitee               string
 	Segments              []string
 	IsOrderMerchant       bool
+	ImportHistory         string
+	IsSetup               string
 }
 
 // ESSort

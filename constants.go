@@ -1,6 +1,11 @@
 package elasticsearch
 
 const (
+	SubjectRequestProductSkuUpsert      = "selly.request.product_sku.upsert"
+	SubjectPullProductSkuUpsert         = "selly.pull.product_sku.upsert"
+	SubjectRequestProductSkuSearch      = "selly.request.product_sku.search"
+	SubjectRequestProductSkuCreateIndex = "selly.request.product_sku.create_index"
+
 	SubjectRequestProductUpsert      = "selly.request.product.upsert"
 	SubjectPullProductUpsert         = "selly.pull.product.upsert"
 	SubjectRequestProductSearch      = "selly.request.product.search"

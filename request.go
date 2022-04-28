@@ -4,6 +4,21 @@ package elasticsearch
 type Request struct {
 }
 
+// ProductSkuSearch ...
+func (Request) ProductSkuSearch(query ESQuery) (*Response, error) {
+	return requestNats(SubjectRequestProductSkuSearch, toBytes(query))
+}
+
+// ProductSkuUpsert ...
+func (Request) ProductSkuUpsert(payload Payload) (*Response, error) {
+	return requestNats(SubjectRequestProductSkuUpsert, toBytes(payload))
+}
+
+// ProductSkuCreateIndex ...
+func (Request) ProductSkuCreateIndex() (*Response, error) {
+	return requestNats(SubjectRequestProductSkuCreateIndex, toBytes(Payload{}))
+}
+
 // ProductSearch ...
 func (Request) ProductSearch(query ESQuery) (*Response, error) {
 	return requestNats(SubjectRequestProductSearch, toBytes(query))
