@@ -95,6 +95,7 @@ type ESQuery struct {
 	IsOrderMerchant       bool
 	ImportHistory         string
 	IsSetup               string
+	IsAvailable           string
 }
 
 // ESSort
