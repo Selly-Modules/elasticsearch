@@ -43,6 +43,8 @@ type ESQuery struct {
 	Keyword               string
 	ProvinceCode          int
 	Active                string
+	Display               string
+	ShopID                string
 	IsOutOfStock          string
 	CanIssueInvoice       string
 	PendingInactive       string
