@@ -6,6 +6,11 @@ const (
 	SubjectRequestProductSkuSearch      = "selly.request.product_sku.search"
 	SubjectRequestProductSkuCreateIndex = "selly.request.product_sku.create_index"
 
+	SubjectRequestShopProductUpsert      = "selly.request.shop_product.upsert"
+	SubjectPullShopProductUpsert         = "selly.pull.shop_product.upsert"
+	SubjectRequestShopProductSearch      = "selly.request.shop_product.search"
+	SubjectRequestShopProductCreateIndex = "selly.request.shop_product.create_index"
+
 	SubjectRequestProductUpsert      = "selly.request.product.upsert"
 	SubjectPullProductUpsert         = "selly.pull.product.upsert"
 	SubjectRequestProductSearch      = "selly.request.product.search"

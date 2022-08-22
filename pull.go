@@ -28,3 +28,8 @@ func (Pull) KeywordUpsert(payload Payload) (bool, error) {
 func (Pull) ProductSkuUpsert(payload Payload) (bool, error) {
 	return publishWithJetStream(JetStreamSearchService, SubjectPullProductSkuUpsert, toBytes(payload))
 }
+
+// ProductShopUpsert ...
+func (Pull) ProductShopUpsert(payload Payload) (bool, error) {
+	return publishWithJetStream(JetStreamSearchService, SubjectPullShopProductUpsert, toBytes(payload))
+}
