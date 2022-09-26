@@ -98,6 +98,7 @@ type ESQuery struct {
 	ImportHistory         string
 	IsSetup               string
 	IsAvailable           string
+	PlatForm              string
 }
 
 // ESSort
