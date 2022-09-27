@@ -99,6 +99,7 @@ type ESQuery struct {
 	IsSetup               string
 	IsAvailable           string
 	PlatForm              string
+	BusinessType          string
 }
 
 // ESSort
