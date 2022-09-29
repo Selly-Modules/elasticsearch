@@ -100,6 +100,7 @@ type ESQuery struct {
 	IsAvailable           string
 	PlatForm              string
 	BusinessType          string
+	Status                string
 }
 
 // ESSort
