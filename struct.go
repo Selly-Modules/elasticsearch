@@ -101,6 +101,7 @@ type ESQuery struct {
 	PlatForm              string
 	BusinessType          string
 	ServiceEcommerce      []string
+	Status                string
 }
 
 // ESSort
