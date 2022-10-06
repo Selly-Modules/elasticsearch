@@ -63,6 +63,7 @@ type ESQuery struct {
 	ListNotUser           []string
 	PaymentMethod         string
 	Source                string
+	ListSource            []string
 	FromNewActiveSeller   string
 	FromNewActiveBuyer    string
 	EmailStatus           string
